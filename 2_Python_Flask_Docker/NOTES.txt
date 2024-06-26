@@ -1,0 +1,66 @@
+D:\Python_Docker\2_Python_Flask_Docker>docker build -t python_flask .
+[+] Building 125.0s (13/13) FINISHED                                                                                                     docker:desktop-linux
+ => [internal] load build definition from Dockerfile                                                                                                     0.0s
+ => => transferring dockerfile: 507B                                                                                                                     0.0s
+ => [internal] load metadata for docker.io/library/ubuntu:latest                                                                                         3.9s
+ => [auth] library/ubuntu:pull token for registry-1.docker.io                                                                                            0.0s
+ => [internal] load .dockerignore                                                                                                                        0.0s
+ => => transferring context: 2B                                                                                                                          0.0s
+ => CACHED [1/7] FROM docker.io/library/ubuntu:latest@sha256:2e863c44b718727c860746568e1d54afd13b2fa71b160f5cd9058fc436217b30                            0.0s
+ => [internal] load build context                                                                                                                        0.0s
+ => => transferring context: 902B                                                                                                                        0.0s
+ => [2/7] RUN set -xe     && apt-get -yqq update  && apt-get install -yqq python3  && apt-get install -yqq python3-pip  && python3 --version  && pip3  110.6s
+ => [3/7] RUN python3 -m venv /venv                                                                                                                      2.9s
+ => [4/7] RUN pip3 install flask                                                                                                                         4.4s
+ => [5/7] RUN which flask                                                                                                                                0.4s
+ => [6/7] WORKDIR /app                                                                                                                                   0.1s
+ => [7/7] COPY . .                                                                                                                                       0.1s
+ => exporting to image                                                                                                                                   2.3s
+ => => exporting layers                                                                                                                                  2.1s
+ => => writing image sha256:85d7728de6d634d70ec9ff8d36205b9c1cff35bc58fee5815cf48ffe5ad269b3                                                             0.0s
+ => => naming to docker.io/library/python_flask                                                                                                          0.0s
+
+What's next:
+    View a summary of image vulnerabilities and recommendations → docker scout quickview
+
+D:\Python_Docker\2_Python_Flask_Docker>docker images
+REPOSITORY     TAG       IMAGE ID       CREATED          SIZE
+python_flask   latest    85d7728de6d6   18 seconds ago   574MB
+
+D:\Python_Docker\2_Python_Flask_Docker>docker container ls
+CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
+
+D:\Python_Docker\2_Python_Flask_Docker>
+D:\Python_Docker\2_Python_Flask_Docker>
+D:\Python_Docker\2_Python_Flask_Docker>
+D:\Python_Docker\2_Python_Flask_Docker>
+
+Run Docker in Detached mode:
+
+D:\Python_Docker\2_Python_Flask_Docker>docker container run -d -p 5571:5571 python_flask
+459bad134a244aece831142ac13e9c55d7036922498351538485d6e1a3f3ff54
+
+D:\Python_Docker\2_Python_Flask_Docker>
+
+
+D:\Python_Docker\2_Python_Flask_Docker>docker ps
+CONTAINER ID   IMAGE          COMMAND               CREATED              STATUS              PORTS                    NAMES
+459bad134a24   python_flask   "python3 ./main.py"   About a minute ago   Up About a minute   0.0.0.0:5571->5571/tcp   nostalgic_boyd
+
+D:\Python_Docker\2_Python_Flask_Docker>docker stop 459bad134a24
+459bad134a24
+
+D:\Python_Docker\2_Python_Flask_Docker>docker ps
+CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
+
+D:\Python_Docker\2_Python_Flask_Docker>docker rmi -f python_flask
+Untagged: python_flask:latest
+Deleted: sha256:85d7728de6d634d70ec9ff8d36205b9c1cff35bc58fee5815cf48ffe5ad269b3
+
+D:\Python_Docker\2_Python_Flask_Docker>docker ps
+CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
+
+D:\Python_Docker\2_Python_Flask_Docker>docker images
+REPOSITORY   TAG       IMAGE ID   CREATED   SIZE
+
+D:\Python_Docker\2_Python_Flask_Docker>
